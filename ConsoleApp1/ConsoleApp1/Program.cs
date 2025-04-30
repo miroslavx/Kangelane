@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -23,25 +23,20 @@ public class Kangelane
     {
         get => _asukoht;
         set => _asukoht = value;
-    }
-
-    public virtual int Paasta(int ohus) => (int)Math.Round(ohus * 0.95);
+    }    public virtual int Paasta(int ohus) => (int)Math.Round(ohus * 0.95);
     public virtual string Vormiriietus() => "Tavaline vormiriietus";
     public virtual string Tervitus() => $"Tere, ma olen {_nimi} ja kaitseks {_asukoht}!";
     public virtual string MissiooniStaatus() => "Saadaval";
     public override string ToString() => $"{_nimi}, asukoht: {_asukoht}";
 }
-
 public class SuperKangelane : Kangelane
 {
     private double _osavus;
     private static Random random = new Random();
-
     public SuperKangelane(string nimi, string asukoht) : base(nimi, asukoht)
     {
         _osavus = Math.Round(random.NextDouble() * 4 + 1, 1);
     }
-
     public override int Paasta(int ohus) => (int)Math.Round(ohus * (0.95 + _osavus / 100));
     public override string Vormiriietus() => "Vinge superkostüüm";
     public override string Tervitus() => $"Ma olen suurkangelane {Nimi} ja minu osavus on {_osavus}!";
@@ -73,14 +68,10 @@ public class Program
             }
         }
     }
-
     public static void Main()
-    {
-        LoeKangelasedFailist("andmed.txt");
-
+    {LoeKangelasedFailist("andmed.txt");
         Kangelane tavaline = null;
         SuperKangelane super = null;
-
         foreach (var k in kangelased)
         {
             if (k is SuperKangelane s)
@@ -106,7 +97,6 @@ public class Program
         Console.WriteLine(tavaline.Tervitus());
         Console.WriteLine(tavaline.MissiooniStaatus());
         Console.WriteLine();
-
         Console.WriteLine("Superkangelane:");
         Console.WriteLine($"Päästetud inimesi: {super.Paasta(1000)}");
         Console.WriteLine(super);
