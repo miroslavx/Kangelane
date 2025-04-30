@@ -6,7 +6,6 @@ public class Kangelane
 {
     private string _nimi;
     private string _asukoht;
-
     public Kangelane(string nimi, string asukoht)
     {
         _nimi = nimi;
@@ -18,7 +17,6 @@ public class Kangelane
         get => _nimi;
         set => _nimi = value;
     }
-
     public string Asukoht
     {
         get => _asukoht;
